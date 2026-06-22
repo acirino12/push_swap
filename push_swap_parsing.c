@@ -121,11 +121,10 @@ int    strategy_selector(char *s, int *strategy)
 
 // Ricorda di modificare per gestire l'aggiunta di ft_split nel caso in cui i numeri ricevuti in argomento siano racchiusi da virgolette (es.: "1 2 3")
 
-int parse_arguments(int argc, char **argv, t_stack *stack_a)
+int parse_arguments(int argc, char **argv, t_stack *stack_a, int *strategy)
 {
 	int	i;
     int	value;
-	int	strategy;
 
     i = 1; // Partiamo da 1 per saltare il nome dell'eseguibile
     strategy = 0;
@@ -134,7 +133,7 @@ int parse_arguments(int argc, char **argv, t_stack *stack_a)
     {
         if (1 == i && argv[1][1] == '-' && argv[1][2] == '-')
         {
-            if(strategy_selector(argv[1] + 2, &strategy))
+            if(strategy_selector(argv[1] + 2, strategy))
                 i++;
         }
         // 1. Controlla caratteri ed overflow
