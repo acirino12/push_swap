@@ -103,8 +103,15 @@ int parse_arguments(int argc, char **argv, t_stack *stack_a)
     int value;
 
     i = 1; // Partiamo da 1 per saltare il nome dell'eseguibile
+
+    // CONTROLLARE LA PRESENZA DI UN STRATEGY SELECTOR
+    
     while (i < argc)
     {
+        if (1 == i && argv[1] == argv[2] && argv[1] == '-')
+        {
+            
+        }
         // 1. Controlla caratteri ed overflow
         if (!ft_atoi_save(argv[i], &value))
         {
