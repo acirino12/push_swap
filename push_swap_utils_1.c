@@ -1,5 +1,43 @@
 #include "push_swap.h"
 
+
+/**
+ * Converte una stringa in un intero controllando la presenza di overflow.
+ * Ritorna 1 in caso di successo, 0 se la stringa contiene caratteri errati o sfora INT.
+ */
+int	ft_atoi_save(const char *str, int *result)
+{
+	long	num;
+	int		sign;
+	int		i;
+
+	num = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	if (str[i] < '0' || str[i] > '9')
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0');
+		if ((sign == 1 && num > INT_MAX) || (sign == -1 && (-num) < INT_MIN))
+			return (0);
+		i++;
+	}
+	if (str[i] != '\0')
+		return (0);
+	*result = (int)(num * sign);
+	return (1);
+}
+
+
 void assign_indexes(t_stack *stack_a)
 {
     t_node  *current;

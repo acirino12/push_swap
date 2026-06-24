@@ -1,23 +1,4 @@
 #include "push_swap.h"
-#include <limits.h>
-
-/**
- * Libera completamente la matrice di stringhe allocata da ft_split
- */
-void	free_matrix(char **matrix)
-{
-	int	i;
-
-	if (!matrix)
-		return ;
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
-}
 
 /**
  * Gestisce l'errore di parsing stampando "Error" su stderr,
@@ -33,46 +14,10 @@ static void	handle_parse_error(t_pushswap *ps, char **matrix)
 }
 
 /**
- * Converte una stringa in un intero controllando la presenza di overflow.
- * Ritorna 1 in caso di successo, 0 se la stringa contiene caratteri errati o sfora INT.
- */
-int	ft_atoi_save(const char *str, int *result)
-{
-	long	num;
-	int		sign;
-	int		i;
-
-	num = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	if (str[i] < '0' || str[i] > '9')
-		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + (str[i] - '0');
-		if ((sign == 1 && num > INT_MAX) || (sign == -1 && (-num) < INT_MIN))
-			return (0);
-		i++;
-	}
-	if (str[i] != '\0')
-		return (0);
-	*result = (int)(num * sign);
-	return (1);
-}
-
-/**
  * Verifica se un valore è già presente all'interno dello stack A.
  * Ritorna 1 se duplicato, 0 altrimenti.
  */
-int	has_duplicate(t_stack *stack_a, int value)
+static int	has_duplicate(t_stack *stack_a, int value)
 {
 	t_node	*current;
 
@@ -92,7 +37,7 @@ int	has_duplicate(t_stack *stack_a, int value)
  * Alloca e inserisce un nuovo nodo in coda allo stack A.
  * Ritorna 1 in caso di successo, 0 se la malloc fallisce.
  */
-int	push_back(t_stack *stack_a, int value)
+static int	push_back(t_stack *stack_a, int value)
 {
 	t_node	*new_node;
 	t_node	*last;
@@ -124,7 +69,7 @@ int	push_back(t_stack *stack_a, int value)
  * Riconosce i flag dei selettori di strategia definiti dal soggetto.
  * Utilizza la tua ft_strncmp della libft per i controlli.
  */
-int	strategy_selector(char *s, int *strategy)
+static int	strategy_selector(char *s, int *strategy)
 {
 	if (ft_strncmp(s, "--adaptive", 11) == 0)
 		*strategy = 0;
@@ -160,7 +105,6 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 		if (!split_args)
 			handle_parse_error(ps, NULL);
 		j = 0;
-		// Se la stringa passata era vuota (es. ""), split non mette elementi e saltiamo il blocco
 		while (split_args[j])
 		{
 			if (!ft_atoi_save(split_args[j], &value)

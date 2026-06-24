@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 /* Struttura per il singolo nodo della lista doppiamente concatenata */
 typedef struct s_node
@@ -35,6 +36,7 @@ typedef struct s_pushswap
 /* Utility e Inizializzazione - si trovano su utils_1 */
 void	assign_indexes(t_stack *stack_a);
 int		compute_disorder(t_stack *stack_a);
+int		ft_atoi_save(const char *str, int *result);
 
 /* Operazioni Base (Istruzioni di Push_swap) */
 // Swap
@@ -58,14 +60,14 @@ void	rrr(t_pushswap *ps);
 
 /* Gestione Memoria ed Errori */
 void	free_stack(t_stack *stack);
-void	free_matrix(char **matrix); //Questa funzione si trova nel parsing
+void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
 /* Prototipi aggiunti presenti in parsing */
 void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
-int     strategy_selector(char *s, int *strategy);
-int     ft_atoi_save(const char *str, int *result);
-int     has_duplicate(t_stack *stack_a, int value);
-int     push_back(t_stack *stack_a, int value);
+
+/* libf */
+char	**ft_split(char const *s, char c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
