@@ -39,18 +39,13 @@ int compute_disorder(t_stack *stack_a)
     total_pairs = 0;
     if (!stack_a || stack_a->size < 2)
         return (0);
-    
-    // Il primo ciclo "for i from 0 to size(a)-1" parte dalla cima
     i = stack_a->top;
     while (i != NULL)
     {
-        // Il secondo ciclo "for j from i+1 to size(a)-1" parte dal nodo successivo a i
         j = i->next;
         while (j != NULL)
         {
             total_pairs += 1;
-            // Confronto tra l'elemento corrente e quello successivo
-            // Usiamo 'index' perché riflette perfettamente l'ordine dei numeri reali
             if (i->index > j->index)
                 mistakes += 1;
             j = j->next;
@@ -59,6 +54,6 @@ int compute_disorder(t_stack *stack_a)
     }
     if (total_pairs == 0)
         return (0);
-    // Moltiplichiamo per 100 per restituire la percentuale intera per il tuo printf
-    return ((mistakes * 100) / total_pairs);
+    // Usiamo il casting a long per evitare overflow durante la moltiplicazione
+    return ((int)(((long)mistakes * 10000) / total_pairs));
 }
