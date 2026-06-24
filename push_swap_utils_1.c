@@ -26,6 +26,7 @@ void assign_indexes(t_stack *stack_a)
         current->index = final_position;
         current = current->next;
     }
+}
 
 int compute_disorder(t_stack *stack_a)
 {
