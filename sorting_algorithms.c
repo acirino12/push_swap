@@ -67,8 +67,7 @@ void	radix_sort(t_pushswap *ps)
 	}
 	while (size[1]--)
 		{
-			if (size[1] > 1)
-				rrb(ps, 1);
+			rrb(ps, 1);
 			pa(ps, 1);
 			ra(ps, 1);
 		}
