@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
+/*   Updated: 2026/06/25 10:29:52 by acirino          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
@@ -6,7 +19,9 @@ int main(int argc, char **argv)
 	int			disorder;
 	t_pushswap	*ps;
 
-	ps = NULL;
+	ps = ft_calloc(1, sizeof(t_pushswap));
+	if (!ps)
+		return (1);
 	parse_arguments(argc, argv, ps, &strategy);
 	assign_indexes(&ps->a);
 	disorder = compute_disorder(&ps->a);
@@ -19,7 +34,12 @@ int main(int argc, char **argv)
 		else
 			strategy = 2;
 	}
-	
-	// Stampiamo i passi dell'algoritmo scelto 
-		
+	if (strategy == 1)
+		bubble_sort(ps);
+//	else if (strategy == 2)
+	else if (strategy == 3)
+		radix_sort(ps);
+	free_stack(&ps->a);
+	free (ps);
+	return (0);
 }

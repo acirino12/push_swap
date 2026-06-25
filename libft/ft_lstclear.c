@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 14:01:09 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/24 17:12:45 by acirino          ###   ########.fr       */
+/*   Created: 2026/05/23 13:47:15 by acirino           #+#    #+#             */
+/*   Updated: 2026/05/30 22:02:11 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	i;
+	t_list	*temp;
 
-	i = 0;
-	if (dstsize > 0)
+	if (lst)
 	{
-		while (src[i] && i < dstsize - 1)
+		while (*lst)
 		{
-			dst[i] = src[i];
-			i++;
+			temp = *lst;
+			*lst = (*lst)-> next;
+			ft_lstdelone(temp, del);
 		}
-		dst[i] = '\0';
 	}
-	return (ft_strlen(src));
 }

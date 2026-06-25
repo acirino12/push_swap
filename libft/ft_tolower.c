@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 14:01:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/24 17:12:53 by acirino          ###   ########.fr       */
+/*   Created: 2026/05/23 14:04:31 by acirino           #+#    #+#             */
+/*   Updated: 2026/05/28 18:16:39 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_tolower(int c)
 {
-	size_t	l;
-
-	l = 0;
-	while (s[l] != 0)
-		l += 1;
-	return (l);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 'a' - 'A');
+	return (c);
 }

@@ -6,11 +6,11 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 13:56:27 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/24 16:46:46 by acirino          ###   ########.fr       */
+/*   Updated: 2026/05/28 18:15:46 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
 static size_t	word_count(char const *s, char c);
 static char		*worddup(char const *s, char c);

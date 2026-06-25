@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "libft/libft.h"
 
 /* Struttura per il singolo nodo della lista doppiamente concatenata */
 typedef struct s_node
@@ -66,10 +67,9 @@ void	print_error_and_exit(t_pushswap *ps);
 /* Prototipi aggiunti presenti in parsing */
 void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
 
-/* libf */
-char	**ft_split(char const *s, char c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+// Algoritmi di Ordinamento
+void	bubble_sort(t_pushswap *ps);
+void	radix_sort(t_pushswap *ps);
 
 #endif

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 14:05:14 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/24 16:47:04 by acirino          ###   ########.fr       */
+/*   Created: 2026/05/23 13:55:44 by acirino           #+#    #+#             */
+/*   Updated: 2026/05/28 18:15:38 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned char	*p1;
-	unsigned char	*p2;
+	char	c;
 
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	while ((*p1 || *p2) && n)
+	if (n < 0)
 	{
-		if (*p1 == *p2)
-		{
-			p1 = p1 + 1;
-			p2 = p2 + 1;
-			n--;
-		}
-		else
-			return (*p1 - *p2);
+		write(fd, "-", 1);
+		n = (-1) * n;
 	}
-	return (0);
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	c = '0';
+	c = c + n % 10;
+	if (c == 40)
+		write(fd, "2147483648", 10);
+	else
+		write(fd, &c, 1);
 }
 
-// NOTE: The comparison is done using unsigned characters.
+// Note:
+// (-1) * min_int = min_int
+// min_int % 10 = -8 AND '0' = 48
