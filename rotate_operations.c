@@ -31,8 +31,17 @@ static void	rotate(t_stack *stack)
 // ra (rotate a) Sposta tutti gli elementi dello stack a verso l'alto di 1 posizione.
 // Il primo elemento diventa l'ultimo
 
-void	ra(t_pushswap *ps)
+void	ra(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" ra: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	rotate(&ps->a);
 	write(1, "ra\n", 3);
 	ps->op_count++;
@@ -41,8 +50,17 @@ void	ra(t_pushswap *ps)
 // rb (rotate b) Sposta tutti gli elementi dello stack b verso l'alto di 1 posizione.
 // Il primo elemento diventa l'ultimo
 
-void	rb(t_pushswap *ps)
+void	rb(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" rb: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	rotate(&ps->b);
 	write(1, "rb\n", 3);
 	ps->op_count++;
@@ -50,8 +68,17 @@ void	rb(t_pushswap *ps)
 
 // rr Esegue ra e rb contemporaneamente
 
-void	rr(t_pushswap *ps)
+void	rr(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" rr: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	rotate(&ps->a);
 	rotate(&ps->b);
 	write(1, "rr\n", 3);

@@ -84,11 +84,21 @@ static int	strategy_selector(char *s, int *strategy)
 	return (1);
 }
 
+static int	bench_selector(char *s, int *bench)
+{
+	*bench = 0;
+	if (ft_strncmp(s, "--bench", 8) == 0)
+		*bench = 1;
+	else
+		return (0);
+	return (1);
+}
+
 /**
  * Funzione principale per il parsing. Legge l'array degli argomenti,
  * estrae le sotto-stringhe tramite ft_split e popola in modo sicuro lo stack.
  */
-void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
+void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, int *bench)
 {
 	int		i;
 	int		j;
@@ -97,7 +107,9 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 
 	i = 1;
 	*strategy = 0;
-	if (argc > 1 && strategy_selector(argv[1], strategy))
+	if (argc > i && bench_selector(argv[i], bench))
+		i++;
+	if (argc > i && strategy_selector(argv[i], strategy))
 		i++;
 	while (i < argc)
 	{

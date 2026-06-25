@@ -30,8 +30,17 @@ static void	reverse_rotate(t_stack *stack)
  * rra (reverse rotate a): Sposta tutti gli elementi dello stack a verso il basso di 1.
  * L'ultimo elemento diventa il primo.
  */
-void	rra(t_pushswap *ps)
+void	rra(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" rra: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	reverse_rotate(&ps->a);
 	write(1, "rra\n", 4);
 	ps->op_count++;
@@ -41,8 +50,17 @@ void	rra(t_pushswap *ps)
  * rrb (reverse rotate b): Sposta tutti gli elementi dello stack b verso il basso di 1.
  * L'ultimo elemento diventa il primo.
  */
-void	rrb(t_pushswap *ps)
+void	rrb(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" rrb: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	reverse_rotate(&ps->b);
 	write(1, "rrb\n", 4);
 	ps->op_count++;
@@ -51,8 +69,18 @@ void	rrb(t_pushswap *ps)
 /**
  * rrr : Esegue rra e rrb contemporaneamente.
  */
-void	rrr(t_pushswap *ps)
+void	rrr(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" rrr: ", 2);
+		ft_putnbr_fd(count, 2);
+		ft_putstr_fd("\n", 2);
+		return ;
+	}
+	count++;
 	reverse_rotate(&ps->a);
 	reverse_rotate(&ps->b);
 	write(1, "rrr\n", 4);

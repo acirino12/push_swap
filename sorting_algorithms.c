@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 17:32:55 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/25 10:38:56 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/25 11:56:48 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	bubble_sort(t_pushswap	*ps)
 		while (i < a->size)
 		{
 			if (i != a->size -1 && a->top->index > a->top->next->index)
-				sa(ps);
-			ra(ps);
+				sa(ps, 1);
+			ra(ps, 1);
 			i++;
 		}
 	}
@@ -49,17 +49,17 @@ void	radix_sort(t_pushswap *ps)
 		while (size[0]--)
 		{
 			if ((ps->a.top->index & bucket) == 0)
-				ra(ps);
+				ra(ps, 1);
 			else
-				pb(ps);
+				pb(ps, 1);
 		}
 		while (size[1]--)
 		{
-			rrb(ps);
+			rrb(ps, 1);
 			if ((ps->b.top->index & bucket) == 0)
 			{
-				pa(ps);
-				ra(ps);
+				pa(ps, 1);
+				ra(ps, 1);
 			}
 		}
 		bucket *= 2;
@@ -68,8 +68,8 @@ void	radix_sort(t_pushswap *ps)
 	while (size[1]--)
 		{
 			if (size[1] > 1)
-				rrb(ps);
-			pa(ps);
-			ra(ps);
+				rrb(ps, 1);
+			pa(ps, 1);
+			ra(ps, 1);
 		}
 }

@@ -25,8 +25,17 @@ static void	push(t_stack *dest, t_stack *src)
 //pa (push a) prende il primo elemento in cima a b e lo mette in cima ad a
 //Non fa nulla se b è vuoto
 
-void	pa(t_pushswap *ps)
+void	pa(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" ss: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	push(&ps->a, &ps->b);
 	write(1, "pa\n", 3);
 	ps->op_count++;
@@ -35,8 +44,18 @@ void	pa(t_pushswap *ps)
 //pb (push b) prende il primo elemento in cima ad a e lo mette in cima a b
 //Non fa nulla se a è vuoto
 
-void	pb(t_pushswap *ps)
+void	pb(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" ss: ", 2);
+		ft_putnbr_fd(count, 2);
+		ft_putstr_fd("\n", 2);
+		return ;
+	}
+	count++;
 	push(&ps->b, &ps->a);
 	write(1, "pb\n", 3);
 	ps->op_count++;

@@ -26,24 +26,52 @@ static void	swap(t_stack *stack)
 }
 
 //swap nello stack a
-void	sa(t_pushswap *ps)
+void	sa(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" sa: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	swap(&ps->a);
 	write(1, "sa\n", 3);
 	ps->op_count++;
+	
 }
 
 //swap nello stack b
-void	sb(t_pushswap *ps)
+void	sb(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" sb: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	swap(&ps->b);
 	write(1, "sb\n", 3);
 	ps->op_count++;
 }
 
 //swap in tutti gli stack allo stesso tempo
-void	ss(t_pushswap *ps)
+void	ss(t_pushswap *ps, int bench)
 {
+	static int	count = 0;
+
+	if(bench == 0)
+	{
+		ft_putstr_fd(" ss: ", 2);
+		ft_putnbr_fd(count, 2);
+		return ;
+	}
+	count++;
 	swap(&ps->a);
 	swap(&ps->b);
 	write(1, "ss\n", 3);

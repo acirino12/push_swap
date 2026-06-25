@@ -41,23 +41,23 @@ int		ft_atoi_save(const char *str, int *result);
 
 /* Operazioni Base (Istruzioni di Push_swap) */
 // Swap
-void	sa(t_pushswap *ps);
-void	sb(t_pushswap *ps);
-void	ss(t_pushswap *ps);
+void	sa(t_pushswap *ps, int bench);
+void	sb(t_pushswap *ps, int bench);
+void	ss(t_pushswap *ps, int bench);
 
 // Push
-void	pa(t_pushswap *ps);
-void	pb(t_pushswap *ps);
+void	pa(t_pushswap *ps, int bench);
+void	pb(t_pushswap *ps, int bench);
 
 // Rotate
-void	ra(t_pushswap *ps);
-void	rb(t_pushswap *ps);
-void	rr(t_pushswap *ps);
+void	ra(t_pushswap *ps, int bench);
+void	rb(t_pushswap *ps, int bench);
+void	rr(t_pushswap *ps, int bench);
 
 // Reverse Rotate
-void	rra(t_pushswap *ps);
-void	rrb(t_pushswap *ps);
-void	rrr(t_pushswap *ps);
+void	rra(t_pushswap *ps, int bench);
+void	rrb(t_pushswap *ps, int bench);
+void	rrr(t_pushswap *ps, int bench);
 
 /* Gestione Memoria ed Errori */
 void	free_stack(t_stack *stack);
@@ -65,7 +65,7 @@ void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
 /* Prototipi aggiunti presenti in parsing */
-void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
+void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, int *bench);
 
 
 // Algoritmi di Ordinamento
