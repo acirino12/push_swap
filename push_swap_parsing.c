@@ -113,6 +113,8 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, int *
 		i++;
 	while (i < argc)
 	{
+		if (argv[i][0] == 0)
+			handle_parse_error(ps, NULL);
 		split_args = ft_split(argv[i], ' ');
 		if (!split_args)
 			handle_parse_error(ps, NULL);
