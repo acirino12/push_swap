@@ -82,7 +82,8 @@ int	main(int argc, char **argv)
 	}
 	if (strategy[0] == 1 || (strategy[0] == 0 && strategy[1] == 1))
 		bubble_sort(ps);
-//	else if (strategy[0] == 2 || (strategy[0] == 0 && strategy[1] == 2))
+	else if (strategy[0] == 2 || (strategy[0] == 0 && strategy[1] == 2))
+		medium_sort(ps);
 	else if (strategy[0] == 3 || (strategy[0] == 0 && strategy[1] == 3))
 		radix_sort(ps);
 	bench_mode(bench, disorder, strategy, ps);
