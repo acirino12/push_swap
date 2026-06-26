@@ -41,19 +41,17 @@ static void	set_size(int *size, t_pushswap *ps)
  * Trova la posizione (indice di nodo) del valore cercato nello stack B.
  * Serve per calcolare se conviene fare rb o rrb.
  */
-static int	get_pos_in_b(t_stack *b, int target_index)
+static int	get_position(t_node *s, int target_index)
 {
-	t_node	*curr;
 	int		pos;
 
-	curr = b->top;
 	pos = 0;
-	while (curr)
+	while (s)
 	{
-		if (curr->index == target_index)
+		if (s->index == target_index)
 			return (pos);
 		pos++;
-		curr = curr->next;
+		s = s->next;
 	}
 	return (0);
 }
@@ -93,7 +91,7 @@ void	medium_sort(t_pushswap *ps)
 	// Fase 2: Svuotamento controllato di B verso A
 	while (ps->b.size > 0)
 	{
-		if (get_pos_in_b(&ps->b, ps->b.size - 1) < ps->b.size / 2)
+		if (get_position(ps->b.top, ps->b.size - 1) < ps->b.size / 2)
 		{
 			while (ps->b.top->index != ps->b.size - 1)
 				rb(ps, 1);
