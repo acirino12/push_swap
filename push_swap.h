@@ -70,6 +70,7 @@ void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, in
 
 // Algoritmi di Ordinamento
 void	bubble_sort(t_pushswap *ps);
+void	medium_sort(t_pushswap *ps);
 void	radix_sort(t_pushswap *ps);
 
 #endif
