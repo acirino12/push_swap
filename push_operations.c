@@ -31,7 +31,7 @@ void	pa(t_pushswap *ps, int bench)
 
 	if(bench == 0)
 	{
-		ft_putstr_fd(" ss: ", 2);
+		ft_putstr_fd(" pa: ", 2);
 		ft_putnbr_fd(count, 2);
 		return ;
 	}
@@ -50,7 +50,7 @@ void	pb(t_pushswap *ps, int bench)
 
 	if(bench == 0)
 	{
-		ft_putstr_fd(" ss: ", 2);
+		ft_putstr_fd(" pb: ", 2);
 		ft_putnbr_fd(count, 2);
 		ft_putstr_fd("\n", 2);
 		return ;
