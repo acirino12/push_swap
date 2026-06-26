@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/25 12:26:54 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/26 18:20:33 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 			strategy[1] = 2;
 	}
 	if (strategy[0] == 1 || (strategy[0] == 0 && strategy[1] == 1))
-		bubble_sort(ps);
+		simple_sort(ps);
 	else if (strategy[0] == 2 || (strategy[0] == 0 && strategy[1] == 2))
 		medium_sort(ps);
 	else if (strategy[0] == 3 || (strategy[0] == 0 && strategy[1] == 3))

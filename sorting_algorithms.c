@@ -6,41 +6,16 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 17:32:55 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/25 11:56:48 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/26 18:55:09 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubble_sort(t_pushswap	*ps)
-{
-	t_stack	*a;
-	int		i;
-
-	a = &ps->a;
-	while (compute_disorder(a))
-	{
-		i = 0;
-		while (i < a->size)
-		{
-			if (i != a->size -1 && a->top->index > a->top->next->index)
-				sa(ps, 1);
-			ra(ps, 1);
-			i++;
-		}
-	}
-}
-
-static void	set_size(int *size, t_pushswap *ps)
-{
-	size[0] = (&ps->a)->size;
-	size[1] = (&ps->b)->size;
-}
-
-/**
- * Trova la posizione (indice di nodo) del valore cercato nello stack B.
- * Serve per calcolare se conviene fare rb o rrb.
- */
+/*
+	Returns the distance of index=target_value from the node(=top of the stack)
+	We'll use this value to decide whether to rotate or reverse-rotate
+*/
 static int	get_position(t_node *s, int target_index)
 {
 	int		pos;
@@ -54,6 +29,64 @@ static int	get_position(t_node *s, int target_index)
 		s = s->next;
 	}
 	return (0);
+}
+
+/*
+To sort three elements:
+	Put the max in last position:
+		if max in position 1       -> ra
+		else if max in posizione 2 -> rra
+	Control the first two elements
+*/
+
+static void	sort_three(t_pushswap *ps)
+{
+    t_stack *a = &ps->a;
+    
+	if (a->size > 2)
+	{
+    	if (a->top->index > a->top->next->index && a->top->index > a->top->next->next->index)
+        	ra(ps, 1);
+    	else if (a->top->next->index > a->top->index && a->top->next->index > a->top->next->next->index)
+        	rra(ps, 1);
+	}
+	if (a->size > 1)
+	{
+    	if (a->top->index > a->top->next->index)
+        	sa(ps, 1);
+	}
+}
+
+/*
+	Take the minimus index of stack a and put it on stack b.
+	Do this till stack a has 3 elements.
+*/
+
+void	simple_sort(t_pushswap	*ps)
+{
+	t_stack	*a;
+	int		i;
+	
+	a = &ps->a;
+	i = 0;
+	while (a->size > 3)
+	{
+		if (get_position(a->top, i) < a->size / 2)
+		{
+			while (a->top->index != i)
+				ra(ps, 1);
+		}
+		else
+		{
+			while (a->top->index != i)
+				rra(ps, 1);
+		}
+		pb(ps, 1);
+		i++;
+	}
+	sort_three(ps);
+	while (ps->b.size)
+		pa(ps, 1);
 }
 
 /**
@@ -103,6 +136,12 @@ void	medium_sort(t_pushswap *ps)
 		}
 		pa(ps, 1);
 	}
+}
+
+static void	set_size(int *size, t_pushswap *ps)
+{
+	size[0] = (&ps->a)->size;
+	size[1] = (&ps->b)->size;
 }
 
 void	radix_sort(t_pushswap *ps)
