@@ -4,7 +4,7 @@
  * Gestisce l'errore di parsing stampando "Error" su stderr,
  * liberando la memoria attiva e terminando il programma.
  */
-static void	handle_parse_error(t_pushswap *ps, char **matrix)
+void	handle_parse_error(t_pushswap *ps, char **matrix)
 {
 	write(2, "Error\n", 6);
 	if (matrix)
@@ -17,7 +17,7 @@ static void	handle_parse_error(t_pushswap *ps, char **matrix)
  * Verifica se un valore è già presente all'interno dello stack A.
  * Ritorna 1 se duplicato, 0 altrimenti.
  */
-static int	has_duplicate(t_stack *stack_a, int value)
+int	has_duplicate(t_stack *stack_a, int value)
 {
 	t_node	*current;
 
@@ -37,7 +37,7 @@ static int	has_duplicate(t_stack *stack_a, int value)
  * Alloca e inserisce un nuovo nodo in coda allo stack A.
  * Ritorna 1 in caso di successo, 0 se la malloc fallisce.
  */
-static int	push_back(t_stack *stack_a, int value)
+int	push_back(t_stack *stack_a, int value)
 {
 	t_node	*new_node;
 	t_node	*last;

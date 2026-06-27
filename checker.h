@@ -1,10 +1,11 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 /* Struttura per il singolo nodo della lista doppiamente concatenata */
 typedef struct s_node
@@ -34,10 +35,8 @@ typedef struct s_pushswap
 /*                               PROTOTIPI                                    */
 /* ========================================================================== */
 
-void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps);
 
 /* Utility e Inizializzazione - si trovano su utils_1 */
-void	assign_indexes(t_stack *stack_a);
 int		compute_disorder(t_stack *stack_a);
 int		ft_atoi_save(const char *str, int *result);
 
@@ -66,15 +65,10 @@ void	free_stack(t_stack *stack);
 void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
-/* Prototipi aggiunti presenti in parsing */
-void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, int *bench);
+void    parse_arguments_checker(int argc, char **argv, t_pushswap *ps);
 int		has_duplicate(t_stack *stack, int value);
 void	handle_parse_error(t_pushswap *ps, char **matrix);
 int		push_back(t_stack *stack, int value);
-
-// Algoritmi di Ordinamento
-void	simple_sort(t_pushswap *ps);
-void	medium_sort(t_pushswap *ps);
-void	radix_sort(t_pushswap *ps);
+void	execute(char *buffer, t_pushswap *ps);
 
 #endif
