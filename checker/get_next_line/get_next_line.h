@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 13:48:16 by marcoppo          #+#    #+#             */
-/*   Updated: 2026/06/27 16:51:22 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/27 17:11:22 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 
 char	*get_next_line(int fd);
 

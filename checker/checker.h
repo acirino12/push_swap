@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include "get_next_line/get_next_line.h"
 
 /* Struttura per il singolo nodo della lista doppiamente concatenata */
