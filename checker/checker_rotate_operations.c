@@ -43,7 +43,6 @@ void	ra(t_pushswap *ps, int bench)
 	}
 	count++;
 	rotate(&ps->a);
-	ps->op_count++;
 }
 
 // rb (rotate b) Sposta tutti gli elementi dello stack b verso l'alto di 1 posizione.
@@ -61,7 +60,6 @@ void	rb(t_pushswap *ps, int bench)
 	}
 	count++;
 	rotate(&ps->b);
-	ps->op_count++;
 }
 
 // rr Esegue ra e rb contemporaneamente
@@ -79,5 +77,4 @@ void	rr(t_pushswap *ps, int bench)
 	count++;
 	rotate(&ps->a);
 	rotate(&ps->b);
-	ps->op_count++;
 }
