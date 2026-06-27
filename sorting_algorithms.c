@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 17:32:55 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/26 18:55:09 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/27 15:28:29 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,21 @@ static void	sort_three(t_pushswap *ps)
 
 void	simple_sort(t_pushswap	*ps)
 {
-	t_stack	*a;
 	int		i;
 	
-	a = &ps->a;
+	if (compute_disorder(&ps->a) == 0)
+		return ;
 	i = 0;
-	while (a->size > 3)
+	while (ps->a.size > 3)
 	{
-		if (get_position(a->top, i) < a->size / 2)
+		if (get_position(ps->a.top, i) < ps->a.size / 2)
 		{
-			while (a->top->index != i)
+			while (ps->a.top->index != i)
 				ra(ps, 1);
 		}
 		else
 		{
-			while (a->top->index != i)
+			while (ps->a.top->index != i)
 				rra(ps, 1);
 		}
 		pb(ps, 1);
@@ -98,6 +98,8 @@ void	medium_sort(t_pushswap *ps)
 	int	i;
 	int	chunk_size;
 
+	if (compute_disorder(&ps->a) == 0)
+		return ;
 	i = 0;
 	// Dimensione ottimale del chunk approssimata a √n
 	chunk_size = 1;
@@ -149,6 +151,8 @@ void	radix_sort(t_pushswap *ps)
 	int	bucket;
 	int	size[2];
 
+	if (compute_disorder(&ps->a) == 0)
+		return ;
 	bucket = 1;
 	set_size(size, ps);
 	while (bucket < size[0] + size[1])

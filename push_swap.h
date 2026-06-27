@@ -34,6 +34,8 @@ typedef struct s_pushswap
 /*                               PROTOTIPI                                    */
 /* ========================================================================== */
 
+void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps);
+
 /* Utility e Inizializzazione - si trovano su utils_1 */
 void	assign_indexes(t_stack *stack_a);
 int		compute_disorder(t_stack *stack_a);
