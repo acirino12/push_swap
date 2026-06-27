@@ -38,7 +38,6 @@ void	sa(t_pushswap *ps, int bench)
 	}
 	count++;
 	swap(&ps->a);
-	ps->op_count++;
 	
 }
 
@@ -55,7 +54,6 @@ void	sb(t_pushswap *ps, int bench)
 	}
 	count++;
 	swap(&ps->b);
-	ps->op_count++;
 }
 
 //swap in tutti gli stack allo stesso tempo
@@ -72,5 +70,4 @@ void	ss(t_pushswap *ps, int bench)
 	count++;
 	swap(&ps->a);
 	swap(&ps->b);
-	ps->op_count++;
 }
