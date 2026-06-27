@@ -42,7 +42,6 @@ void	rra(t_pushswap *ps, int bench)
 	}
 	count++;
 	reverse_rotate(&ps->a);
-	ps->op_count++;
 }
 
 /**
@@ -61,7 +60,6 @@ void	rrb(t_pushswap *ps, int bench)
 	}
 	count++;
 	reverse_rotate(&ps->b);
-	ps->op_count++;
 }
 
 /**
@@ -81,5 +79,4 @@ void	rrr(t_pushswap *ps, int bench)
 	count++;
 	reverse_rotate(&ps->a);
 	reverse_rotate(&ps->b);
-	ps->op_count++;
 }
