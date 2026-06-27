@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/27 17:26:26 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/27 17:38:03 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,27 @@ int	main(int argc, char **argv)
 
 void	execute(char *buffer, t_pushswap *ps)
 {
-	if (ft_strncmp(buffer, "sa\n", 3))
+	if (ft_strncmp(buffer, "sa\n", 3) == 0)
 		sa(ps, 1);
-	else if (ft_strncmp(buffer, "sb\n", 3))
+	else if (ft_strncmp(buffer, "sb\n", 3) == 0)
 		sb(ps, 1);
-	else if (ft_strncmp(buffer, "ss\n", 3))
+	else if (ft_strncmp(buffer, "ss\n", 3) == 0)
 		ss(ps, 1);
-	else if (ft_strncmp(buffer, "pa\n", 3))
+	else if (ft_strncmp(buffer, "pa\n", 3) == 0)
 		pa(ps, 1);
-	else if (ft_strncmp(buffer, "pb\n", 3))
+	else if (ft_strncmp(buffer, "pb\n", 3) == 0)
 		pb(ps, 1);
-	else if (ft_strncmp(buffer, "ra\n", 3))
+	else if (ft_strncmp(buffer, "ra\n", 3) == 0)
 		ra(ps, 1);
-	else if (ft_strncmp(buffer, "rb\n", 3))
+	else if (ft_strncmp(buffer, "rb\n", 3) == 0)
 		rb(ps, 1);
-	else if (ft_strncmp(buffer, "rr\n", 3))
+	else if (ft_strncmp(buffer, "rr\n", 3) == 0)
 		rr(ps, 1);
-	else if (ft_strncmp(buffer, "rra\n", 4))
+	else if (ft_strncmp(buffer, "rra\n", 4) == 0)
 		rra(ps, 1);
-	else if (ft_strncmp(buffer, "rrb\n", 4))
+	else if (ft_strncmp(buffer, "rrb\n", 4) == 0)
 		rrb(ps, 1);
-	else if (ft_strncmp(buffer, "rrr\n", 4))
+	else if (ft_strncmp(buffer, "rrr\n", 4) == 0)
 		rrr(ps, 1); 
 	else
 		handle_parse_error(ps, NULL);
