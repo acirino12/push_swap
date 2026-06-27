@@ -39,6 +39,7 @@ typedef struct s_pushswap
 /* Utility e Inizializzazione - si trovano su utils_1 */
 int		compute_disorder(t_stack *stack_a);
 int		ft_atoi_save(const char *str, int *result);
+void assign_indexes(t_stack *stack_a);
 
 /* Operazioni Base (Istruzioni di Push_swap) */
 // Swap
