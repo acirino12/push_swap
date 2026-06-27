@@ -37,7 +37,6 @@ void	pa(t_pushswap *ps, int bench)
 	}
 	count++;
 	push(&ps->a, &ps->b);
-	ps->op_count++;
 }
 
 //pb (push b) prende il primo elemento in cima ad a e lo mette in cima a b
@@ -56,5 +55,4 @@ void	pb(t_pushswap *ps, int bench)
 	}
 	count++;
 	push(&ps->b, &ps->a);
-	ps->op_count++;
 }
