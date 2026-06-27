@@ -43,7 +43,6 @@ void	ra(t_pushswap *ps, int bench)
 	}
 	count++;
 	rotate(&ps->a);
-	write(1, "ra\n", 3);
 	ps->op_count++;
 }
 
@@ -62,7 +61,6 @@ void	rb(t_pushswap *ps, int bench)
 	}
 	count++;
 	rotate(&ps->b);
-	write(1, "rb\n", 3);
 	ps->op_count++;
 }
 
@@ -81,6 +79,5 @@ void	rr(t_pushswap *ps, int bench)
 	count++;
 	rotate(&ps->a);
 	rotate(&ps->b);
-	write(1, "rr\n", 3);
 	ps->op_count++;
 }

@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/27 16:52:16 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/27 17:26:26 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	if (!ps)
 		return (1);
 	parse_arguments_checker(argc, argv, ps);
-	while ((buffer = get_next_line(1)))
+	while ((buffer = get_next_line(0)))
 	{
 		execute(buffer, ps);
 		free(buffer);
