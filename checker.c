@@ -94,20 +94,15 @@ int	main(int argc, char **argv)
 	int			dummy_strat[3];
 
 	if (argc < 2)
-		return (0); // Nessun argomento: si ferma senza stampare nulla
+		return (0);
 	ps = ft_calloc(1, sizeof(t_pushswap));
-	if (!ps)
+	if (!ps || (parse_arguments(argc, argv, ps, dummy_strat), 0))
 		return (1);
-	// Usiamo il parser esistente per verificare errori, duplicati ed estratti
-	parse_arguments(argc, argv, ps, dummy_strat);
 	line = read_line_stdin();
-	while (line != NULL)
+	while (line)
 	{
 		if (!execute_op(line, ps))
-		{
-			free(line);
-			print_error_and_exit(ps); // Stampa "Error\n" su stderr e libera memoria
-		}
+			(free(line), print_error_and_exit(ps));
 		free(line);
 		line = read_line_stdin();
 	}
@@ -115,8 +110,5 @@ int	main(int argc, char **argv)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(&ps->a);
-	free_stack(&ps->b);
-	free (ps);
-	return (0);
+	return (free_stack(&ps->a), free_stack(&ps->b), free(ps), 0);
 }

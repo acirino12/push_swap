@@ -1,22 +1,5 @@
 #include "push_swap.h"
 
-/**
- * Gestisce l'errore di parsing stampando "Error" su stderr,
- * liberando la memoria attiva e terminando il programma.
- */
-void	handle_parse_error(t_pushswap *ps, char **matrix)
-{
-	write(2, "Error\n", 6);
-	if (matrix)
-		free_matrix(matrix);
-	if (ps)
-	{
-		free_stack(&ps->a);
-		free_stack(&ps->b);
-		free(ps);
-	}
-	exit(1);
-}
 
 /**
  * Verifica se un valore è già presente all'interno dello stack A.
@@ -115,19 +98,14 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 		i++;
 	while (i < argc)
 	{
-		if (argv[i][0] == 0)
-			handle_parse_error(ps, NULL);
 		split_args = ft_split(argv[i], ' ');
-		if (!split_args)
+		if (argv[i][0] == 0 || !split_args)
 			handle_parse_error(ps, NULL);
 		j = 0;
 		while (split_args[j])
-		{
-			if (!ft_atoi_save(split_args[j], &value) 
+			if (!ft_atoi_save(split_args[j++], &value) 
 				|| has_duplicate(&ps->a, value) || !push_back(&ps->a, value))
 				handle_parse_error(ps, split_args);
-			j++;
-		}
 		free_matrix(split_args);
 		i++;
 	}

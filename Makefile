@@ -13,7 +13,10 @@ SRCS		= main.c \
  		  reverse_rotate_operations.c \
  		  rotate_operations.c \
  		  sorting_algorithms.c \
- 		  swap_operations.c
+ 		  swap_operations.c \
+		  simple_sort.c \
+		  medium_sort.c \
+		  radix_sort.c
 BONUS_SRCS	= checker.c
 
 OBJS		= $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 16:32:59 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 16:36:03 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 16:54:53 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,23 @@ int compute_disorder(t_stack *stack_a)
     if (total_pairs == 0)
         return (0);
     return ((int)(((long)mistakes * 10000) / total_pairs));
+}
+
+
+/**
+ * Gestisce l'errore di parsing stampando "Error" su stderr,
+ * liberando la memoria attiva e terminando il programma.
+ */
+void	handle_parse_error(t_pushswap *ps, char **matrix)
+{
+	write(2, "Error\n", 6);
+	if (matrix)
+		free_matrix(matrix);
+	if (ps)
+	{
+		free_stack(&ps->a);
+		free_stack(&ps->b);
+		free(ps);
+	}
+	exit(1);
 }

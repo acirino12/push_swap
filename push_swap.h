@@ -40,6 +40,7 @@ void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps);
 void	assign_indexes(t_stack *stack_a);
 int		compute_disorder(t_stack *stack_a);
 int		ft_atoi_save(const char *str, int *result);
+void	handle_parse_error(t_pushswap *ps, char **matrix);
 
 /* Operazioni Base (Istruzioni di Push_swap) */
 // Swap
@@ -69,12 +70,12 @@ void	print_error_and_exit(t_pushswap *ps);
 /* Prototipi aggiunti presenti in parsing */
 void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
 int		has_duplicate(t_stack *stack, int value);
-void	handle_parse_error(t_pushswap *ps, char **matrix);
 int		push_back(t_stack *stack, int value);
 
 // Algoritmi di Ordinamento
 void	simple_sort(t_pushswap *ps);
 void	medium_sort(t_pushswap *ps);
 void	radix_sort(t_pushswap *ps);
+int		get_position(t_node *s, int target_index);
 
 #endif
