@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(&ps->a);
 	if (strategy[0] == 0)
 	{
-		if (ps->a.size <= 15 || disorder < 2000)
+		if (disorder < 2000) // ps->a.size <= 15 || ho tolto questa parte perché a quanto pare non è consentita dal subject
 			strategy[1] = 1;
 		else if (ps->a.size >= 1500 || disorder >= 5000)
 			strategy[1] = 3;
