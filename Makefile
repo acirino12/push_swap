@@ -4,7 +4,15 @@ BONUS NAME	= checker
 CC 		= cc
 CFLAGS		= -Wall -Werror -Wextra
 
-SRCS		= 
+SRCS		= push_operations.c \
+		  push_swap_bench.c \
+		  push_swap_parsing.c \
+		  push_swap_utils.c \
+		  push_swap_utils_memory.c \
+		  reverse_rotate_operations.c \
+		  rotate_operations.c \
+		  sorting_algorithms.c \
+		  swap_operations.c
 BONUS_SRCS	= checker.c
 
 OBJS		= $(SRCS:.c=.o)
