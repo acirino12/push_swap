@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 17:28:54 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 17:29:46 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:48:22 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,29 @@ static void process_b(t_pushswap *ps, int size_b, int bucket)
     }
 }
 
+static void set_size(int *size, t_pushswap *ps)
+{
+    size[0] = (&ps->a)->size;
+    size[1] = (&ps->b)->size;
+}
+
 void    radix_sort(t_pushswap *ps)
 {
     int bucket;
-    int total_size;
+    int size[2];
 
     if (compute_disorder(&ps->a) == 0)
         return ;
-    total_size = ps->a.size;
     bucket = 1;
-    while (bucket < total_size)
+	set_size(size, ps);
+    while (bucket < size[0] + size[1])
     {
-        process_a(ps, ps->a.size, bucket);
-        process_b(ps, ps->b.size, bucket);
+        process_a(ps, size[0], bucket);
+        process_b(ps, size[1], bucket);
         bucket *= 2;
+		set_size(size, ps);
     }
-    while (ps->b.size > 0)
+    while (size[1]--)
     {
         rrb(ps, 1);
         pa(ps, 1);

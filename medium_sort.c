@@ -6,9 +6,11 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 17:29:37 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 17:29:38 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:42:38 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int  calculate_chunk(int size)
 {

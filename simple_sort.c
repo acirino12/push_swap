@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 17:32:55 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 17:29:35 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 17:42:13 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	sort_three(t_pushswap *ps)
 {
     t_stack *a;
 	
-	*a = &ps->a;
+	a = &ps->a;
     if (a->size > 2)
 	{
     	if (a->top->index > a->top->next->index && a->top->index > a->top->next->next->index)

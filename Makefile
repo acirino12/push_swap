@@ -12,7 +12,6 @@ SRCS		= main.c \
  		  push_swap_utils_memory.c \
  		  reverse_rotate_operations.c \
  		  rotate_operations.c \
- 		  sorting_algorithms.c \
  		  swap_operations.c \
 		  simple_sort.c \
 		  medium_sort.c \
