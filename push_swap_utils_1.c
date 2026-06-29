@@ -1,42 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils_1.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/29 16:32:59 by acirino           #+#    #+#             */
+/*   Updated: 2026/06/29 16:36:03 by acirino          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 
-
-/**
- * Converte una stringa in un intero controllando la presenza di overflow.
- * Ritorna 1 in caso di successo, 0 se la stringa contiene caratteri errati o sfora INT.
- */
-int	ft_atoi_save(const char *str, int *result)
+int ft_atoi_save(const char *str, int *result)
 {
 	long	num;
 	int		sign;
-	int		i;
 
 	num = 0;
 	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+		if (*str++ == '-')
 			sign = -1;
-		i++;
-	}
-	if (str[i] < '0' || str[i] > '9')
+	if (*str < '0' || *str > '9')
 		return (0);
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		num = num * 10 + (str[i] - '0');
-		if ((sign == 1 && num > INT_MAX) || (sign == -1 && (-num) < INT_MIN))
+		num = num * 10 + (*str++ - '0');
+		if ((sign == 1 && num > INT_MAX) || (sign == -1 && -num < INT_MIN))
 			return (0);
-		i++;
 	}
-	if (str[i] != '\0')
+	if (*str != '\0')
 		return (0);
 	*result = (int)(num * sign);
 	return (1);
 }
-
 
 void assign_indexes(t_stack *stack_a)
 {
@@ -92,6 +93,5 @@ int compute_disorder(t_stack *stack_a)
     }
     if (total_pairs == 0)
         return (0);
-    // Usiamo il casting a long per evitare overflow durante la moltiplicazione
     return ((int)(((long)mistakes * 10000) / total_pairs));
 }

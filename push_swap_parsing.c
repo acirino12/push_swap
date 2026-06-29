@@ -99,10 +99,7 @@ static int	bench_selector(char *s, int *bench)
 	return (1);
 }
 
-/**
- * Funzione principale per il parsing. Legge l'array degli argomenti,
- * estrae le sotto-stringhe tramite ft_split e popola in modo sicuro lo stack.
- */
+
 void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 {
 	int		i;
@@ -126,9 +123,8 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 		j = 0;
 		while (split_args[j])
 		{
-			if (!ft_atoi_save(split_args[j], &value)
-				|| has_duplicate(&ps->a, value)
-				|| !push_back(&ps->a, value))
+			if (!ft_atoi_save(split_args[j], &value) 
+				|| has_duplicate(&ps->a, value) || !push_back(&ps->a, value))
 				handle_parse_error(ps, split_args);
 			j++;
 		}

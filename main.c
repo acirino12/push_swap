@@ -6,11 +6,21 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 16:14:51 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 16:40:46 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	adaptive_mode(int *strategy, int disorder)
+{
+	if (disorder < 2000)
+		strategy[1] = 1;
+	else if (disorder >= 5000)
+		strategy[1] = 3;
+	else
+		strategy[1] = 2;
+}
 
 int	main(int argc, char **argv)
 {
@@ -25,14 +35,7 @@ int	main(int argc, char **argv)
 	assign_indexes(&ps->a);
 	disorder = compute_disorder(&ps->a);
 	if (strategy[0] == 0)
-	{
-		if (disorder < 2000)
-			strategy[1] = 1;
-		else if (disorder >= 5000)
-			strategy[1] = 3;
-		else
-			strategy[1] = 2;
-	}
+		adaptive_mode(strategy, disorder);
 	if (strategy[0] == 1 || (strategy[0] == 0 && strategy[1] == 1))
 		simple_sort(ps);
 	else if (strategy[0] == 2 || (strategy[0] == 0 && strategy[1] == 2))
