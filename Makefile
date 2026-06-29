@@ -1,36 +1,39 @@
 NAME		= push_swap
-BONUS NAME	= checker
+BONUS_NAME	= checker
 
 CC 		= cc
 CFLAGS		= -Wall -Werror -Wextra
 
-SRCS		= push_operations.c \
-		  push_swap_bench.c \
-		  push_swap_parsing.c \
-		  push_swap_utils.c \
-		  push_swap_utils_memory.c \
-		  reverse_rotate_operations.c \
-		  rotate_operations.c \
-		  sorting_algorithms.c \
-		  swap_operations.c
+SRCS		= main.c \
+ 		  push_operations.c \
+ 		  push_swap_bench.c \
+ 		  push_swap_parsing.c \
+ 		  push_swap_utils_1.c \
+ 		  push_swap_utils_memory.c \
+ 		  reverse_rotate_operations.c \
+ 		  rotate_operations.c \
+ 		  sorting_algorithms.c \
+ 		  swap_operations.c
 BONUS_SRCS	= checker.c
 
 OBJS		= $(SRCS:.c=.o)
 BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+
+OBJS_NOMAIN	= $(filter-out main.o,$(OBJS))
 
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(LIIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft  -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 # Regola fondamentale richiesta per il bonus
 bonus:	$(BONUS_NAME)
 
-$(BONUS_NAME):	$(BONUS_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft -o $(BONUS_NAME)
+$(BONUS_NAME):	$(BONUS_OBJS) $(OBJS_NOMAIN) $(LIBFT)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(OBJS_NOMAIN) -L$(LIBFT_DIR) -lft -o $(BONUS_NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)

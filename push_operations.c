@@ -37,7 +37,8 @@ void	pa(t_pushswap *ps, int bench)
 	}
 	count++;
 	push(&ps->a, &ps->b);
-	write(1, "pa\n", 3);
+	if (bench == 1)
+		write(1, "pa\n", 3);
 	ps->op_count++;
 }
 
@@ -57,6 +58,7 @@ void	pb(t_pushswap *ps, int bench)
 	}
 	count++;
 	push(&ps->b, &ps->a);
-	write(1, "pb\n", 3);
+	if (bench == 1)
+		write(1, "pb\n", 3);
 	ps->op_count++;
 }

@@ -38,7 +38,8 @@ void	sa(t_pushswap *ps, int bench)
 	}
 	count++;
 	swap(&ps->a);
-	write(1, "sa\n", 3);
+	if (bench == 1)
+		write(1, "sa\n", 3);
 	ps->op_count++;
 	
 }
@@ -56,7 +57,8 @@ void	sb(t_pushswap *ps, int bench)
 	}
 	count++;
 	swap(&ps->b);
-	write(1, "sb\n", 3);
+	if (bench == 1)
+		write(1, "sb\n", 3);
 	ps->op_count++;
 }
 
@@ -74,6 +76,7 @@ void	ss(t_pushswap *ps, int bench)
 	count++;
 	swap(&ps->a);
 	swap(&ps->b);
-	write(1, "ss\n", 3);
+	if (bench == 1)
+		write(1, "ss\n", 3);
 	ps->op_count++;
 }

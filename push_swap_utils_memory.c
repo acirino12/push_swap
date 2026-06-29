@@ -40,6 +40,7 @@ void	print_error_and_exit(t_pushswap *ps)
 	{
 		free_stack(&ps->a);
 		free_stack(&ps->b);
+		free(ps);
 	}
 	exit(1);
 }

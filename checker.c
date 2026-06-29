@@ -29,27 +29,27 @@ static int	is_stack_sorted(t_stack *stack_a, t_stack *stack_b)
 static int	execute_op(char *line, t_pushswap *ps)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
-		sa(ps, 1);
+		sa(ps, 2);
 	else if (ft_strncmp(line, "sb\n", 3) == 0)
-		sb(ps, 1);
+		sb(ps, 2);
 	else if (ft_strncmp(line, "ss\n", 3) == 0)
-		ss(ps, 1);
+		ss(ps, 2);
 	else if (ft_strncmp(line, "pa\n", 3) == 0)
-		pa(ps, 1);
+		pa(ps, 2);
 	else if (ft_strncmp(line, "pb\n", 3) == 0)
-		pb(ps, 1);
+		pb(ps, 2);
 	else if (ft_strncmp(line, "ra\n", 3) == 0)
-		ra(ps, 1);
+		ra(ps, 2);
 	else if (ft_strncmp(line, "rb\n", 3) == 0)
-		rb(ps, 1);
+		rb(ps, 2);
 	else if (ft_strncmp(line, "rr\n", 3) == 0)
-		rr(ps, 1);
+		rr(ps, 2);
 	else if (ft_strncmp(line, "rra\n", 4) == 0)
-		rra(ps, 1);
+		rra(ps, 2);
 	else if (ft_strncmp(line, "rrb\n", 4) == 0)
-		rrb(ps, 1);
+		rrb(ps, 2);
 	else if (ft_strncmp(line, "rrr\n", 4) == 0)
-		rrr(ps, 1);
+		rrr(ps, 2);
 	else
 		return (0); // Operazione non riconosciuta o malformata
 	return (1);
@@ -66,7 +66,7 @@ static char	*read_line_stdin(void)
 	int		i;
 	int		bytes;
 
-	buffer = malloc(100);
+	buffer = malloc(5);
 	if (!buffer)
 		return (NULL);
 	i = 0;
@@ -74,7 +74,7 @@ static char	*read_line_stdin(void)
 	while (bytes > 0)
 	{
 		buffer[i++] = c;
-		if (c == '\n' || i >= 99)
+		if (c == '\n' || i >= 4)
 			break ;
 		bytes = read(0, &c, 1);
 	}
@@ -89,32 +89,35 @@ static char	*read_line_stdin(void)
 
 int	main(int argc, char **argv)
 {
-	t_pushswap	ps;
+	t_pushswap	*ps;
 	char		*line;
 	int			dummy_strat;
 	int			dummy_bench;
 
 	if (argc < 2)
 		return (0); // Nessun argomento: si ferma senza stampare nulla
-	ft_memset(&ps, 0, sizeof(t_pushswap));
+	ps = ft_calloc(1, sizeof(t_pushswap));
+	if (!ps)
+		return (1);
 	// Usiamo il parser esistente per verificare errori, duplicati ed estratti
-	parse_arguments(argc, argv, &ps, &dummy_strat, &dummy_bench);
+	parse_arguments(argc, argv, ps, &dummy_strat, &dummy_bench);
 	line = read_line_stdin();
 	while (line != NULL)
 	{
-		if (!execute_op(line, &ps))
+		if (!execute_op(line, ps))
 		{
 			free(line);
-			print_error_and_exit(&ps); // Stampa "Error\n" su stderr e libera memoria
+			print_error_and_exit(ps); // Stampa "Error\n" su stderr e libera memoria
 		}
 		free(line);
 		line = read_line_stdin();
 	}
-	if (is_stack_sorted(&ps.a, &ps.b))
+	if (is_stack_sorted(&ps->a, &ps->b))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(&ps.a);
-	free_stack(&ps.b);
+	free_stack(&ps->a);
+	free_stack(&ps->b);
+	free (ps);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/27 15:57:08 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 15:57:49 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 		radix_sort(ps);
 	bench_mode(bench, disorder, strategy, ps);
 	free_stack(&ps->a);
+	free_stack(&ps->b);
 	free (ps);
 	return (0);
 }

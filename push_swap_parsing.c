@@ -9,7 +9,12 @@ void	handle_parse_error(t_pushswap *ps, char **matrix)
 	write(2, "Error\n", 6);
 	if (matrix)
 		free_matrix(matrix);
-	free_stack(&ps->a);
+	if (ps)
+	{
+		free_stack(&ps->a);
+		free_stack(&ps->b);
+		free(ps);
+	}
 	exit(1);
 }
 
