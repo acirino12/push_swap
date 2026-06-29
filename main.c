@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 15:57:49 by acirino          ###   ########.fr       */
+/*   Updated: 2026/06/29 16:14:51 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	int			strategy[2];
-	int			bench;
+	int			strategy[3];
 	int			disorder;
 	t_pushswap	*ps;
 
 	ps = ft_calloc(1, sizeof(t_pushswap));
 	if (!ps)
 		return (1);
-	parse_arguments(argc, argv, ps, strategy, &bench);
+	parse_arguments(argc, argv, ps, strategy);
 	assign_indexes(&ps->a);
 	disorder = compute_disorder(&ps->a);
 	if (strategy[0] == 0)
@@ -40,7 +39,7 @@ int	main(int argc, char **argv)
 		medium_sort(ps);
 	else if (strategy[0] == 3 || (strategy[0] == 0 && strategy[1] == 3))
 		radix_sort(ps);
-	bench_mode(bench, disorder, strategy, ps);
+	bench_mode(strategy[2], disorder, strategy, ps);
 	free_stack(&ps->a);
 	free_stack(&ps->b);
 	free (ps);

@@ -91,8 +91,7 @@ int	main(int argc, char **argv)
 {
 	t_pushswap	*ps;
 	char		*line;
-	int			dummy_strat;
-	int			dummy_bench;
+	int			dummy_strat[3];
 
 	if (argc < 2)
 		return (0); // Nessun argomento: si ferma senza stampare nulla
@@ -100,7 +99,7 @@ int	main(int argc, char **argv)
 	if (!ps)
 		return (1);
 	// Usiamo il parser esistente per verificare errori, duplicati ed estratti
-	parse_arguments(argc, argv, ps, &dummy_strat, &dummy_bench);
+	parse_arguments(argc, argv, ps, dummy_strat);
 	line = read_line_stdin();
 	while (line != NULL)
 	{

@@ -67,7 +67,7 @@ void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
 /* Prototipi aggiunti presenti in parsing */
-void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy, int *bench);
+void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
 int		has_duplicate(t_stack *stack, int value);
 void	handle_parse_error(t_pushswap *ps, char **matrix);
 int		push_back(t_stack *stack, int value);
