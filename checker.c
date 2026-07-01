@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marcoppo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/01 10:03:20 by marcoppo          #+#    #+#             */
+/*   Updated: 2026/07/01 10:05:05 by marcoppo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-/**
- * Verifica se lo stack A è perfettamente ordinato e lo stack B è vuoto.
- * Ritorna 1 se ordinato, 0 altrimenti.
- */
 static int	is_stack_sorted(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current;
@@ -22,10 +30,6 @@ static int	is_stack_sorted(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
-/**
- * Riconosce ed esegue l'operazione letta da stringa.
- * Nota: Passiamo 1 come flag 'bench' per evitare le stampe a schermo delle mosse.
- */
 static int	execute_op(char *line, t_pushswap *ps)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
@@ -51,14 +55,10 @@ static int	execute_op(char *line, t_pushswap *ps)
 	else if (ft_strncmp(line, "rrr\n", 4) == 0)
 		rrr(ps, 2);
 	else
-		return (0); // Operazione non riconosciuta o malformata
+		return (0);
 	return (1);
 }
 
-/**
- * Legge una linea da un file descriptor (carattere per carattere).
- * Ho usato read perché non mi va di mettere tutti file gnl, ho visto che si può fare.
- */
 static char	*read_line_stdin(void)
 {
 	char	*buffer;
