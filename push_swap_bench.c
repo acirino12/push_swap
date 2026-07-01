@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-static void	bench_mode_2(int* strategy, t_pushswap *ps);
+static void	bench_mode_2(int *strategy, t_pushswap *ps);
 
-void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps)
+void	bench_mode(int bench, int disorder, int *strategy, t_pushswap *ps)
 {
 	if (bench == 0)
 		return ;
 	ft_putstr_fd("[bench] disorder: ", 2);
-	ft_putnbr_fd(disorder/100, 2);
+	ft_putnbr_fd(disorder / 100, 2);
 	ft_putstr_fd(".", 2);
-	ft_putnbr_fd(disorder - (disorder/100)*100, 2);
-	if (disorder - (disorder/100)*100 == 0)
+	ft_putnbr_fd(disorder - (disorder / 100) * 100, 2);
+	if (disorder - (disorder / 100) * 100 == 0)
 		ft_putnbr_fd(0, 2);
 	ft_putstr_fd("%\n[bench] strategy: ", 2);
 	if (strategy[0] == 0)
@@ -38,14 +38,14 @@ void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps)
 	bench_mode_2(strategy, ps);
 }
 
-static void	bench_mode_2(int* strategy, t_pushswap *ps)
+static void	bench_mode_2(int *strategy, t_pushswap *ps)
 {
 	if (strategy[0] == 1)
-			ft_putstr_fd("Simple / O(n^2)", 2);
+		ft_putstr_fd("Simple / O(n^2)", 2);
 	else if (strategy[0] == 2)
-			ft_putstr_fd("Medium / O(n rad(n))", 2);
+		ft_putstr_fd("Medium / O(n rad(n))", 2);
 	else if (strategy[0] == 3)
-			ft_putstr_fd("Complex / O(n log(n))", 2);
+		ft_putstr_fd("Complex / O(n log(n))", 2);
 	ft_putstr_fd("\n[bench] total_ops: ", 2);
 	ft_putnbr_fd(ps->op_count, 2);
 	ft_putstr_fd("\n[bench]", 2);
