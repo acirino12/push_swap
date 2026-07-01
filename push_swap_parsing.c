@@ -1,10 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_parsing.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marcoppo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/01 10:25:23 by marcoppo          #+#    #+#             */
+/*   Updated: 2026/07/01 10:25:27 by marcoppo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-/**
- * Verifica se un valore è già presente all'interno dello stack A.
- * Ritorna 1 se duplicato, 0 altrimenti.
- */
 int	has_duplicate(t_stack *stack_a, int value)
 {
 	t_node	*current;
@@ -21,10 +28,6 @@ int	has_duplicate(t_stack *stack_a, int value)
 	return (0);
 }
 
-/**
- * Alloca e inserisce un nuovo nodo in coda allo stack A.
- * Ritorna 1 in caso di successo, 0 se la malloc fallisce.
- */
 int	push_back(t_stack *stack_a, int value)
 {
 	t_node	*new_node;
@@ -53,10 +56,6 @@ int	push_back(t_stack *stack_a, int value)
 	return (1);
 }
 
-/**
- * Riconosce i flag dei selettori di strategia definiti dal soggetto.
- * Utilizza la tua ft_strncmp della libft per i controlli.
- */
 static int	strategy_selector(char *s, int *strategy)
 {
 	if (ft_strncmp(s, "--adaptive", 11) == 0)
@@ -82,7 +81,6 @@ static int	bench_selector(char *s, int *bench)
 	return (1);
 }
 
-
 void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 {
 	int		i;
@@ -103,7 +101,7 @@ void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy)
 			handle_parse_error(ps, NULL);
 		j = 0;
 		while (split_args[j])
-			if (!ft_atoi_save(split_args[j++], &value) 
+			if (!ft_atoi_save(split_args[j++], &value)
 				|| has_duplicate(&ps->a, value) || !push_back(&ps->a, value))
 				handle_parse_error(ps, split_args);
 		free_matrix(split_args);
