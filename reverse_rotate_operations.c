@@ -1,40 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate_operations.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marcoppo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/01 10:55:04 by marcoppo          #+#    #+#             */
+/*   Updated: 2026/07/01 10:55:06 by marcoppo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-/**
- * Logica interna per far ruotare uno stack verso il basso.
- * L'ultimo elemento diventa il primo.
- */
 static void	reverse_rotate(t_stack *stack)
 {
 	t_node	*last;
 
-	// Se lo stack è vuoto o ha meno di 2 elementi, non c'è nulla da ruotare
 	if (!stack || stack->size < 2 || !stack->top)
 		return ;
-	// 1. Scorriamo la lista fino a trovare l'ultimo nodo
 	last = stack->top;
 	while (last->next)
 		last = last->next;
-	// 2. Scolleghiamo l'ultimo nodo dal penultimo
 	if (last->prev)
 		last->prev->next = NULL;
-	// 3. Posizioniamo l'ultimo nodo sopra l'attuale cima
 	last->next = stack->top;
 	stack->top->prev = last;
-	// 4. L'ultimo nodo diventa la nuova cima dello stack
 	last->prev = NULL;
 	stack->top = last;
 }
 
-/**
- * rra (reverse rotate a): Sposta tutti gli elementi dello stack a verso il basso di 1.
- * L'ultimo elemento diventa il primo.
- */
 void	rra(t_pushswap *ps, int bench)
 {
 	static int	count = 0;
 
-	if(bench == 0)
+	if (bench == 0)
 	{
 		ft_putstr_fd(" rra: ", 2);
 		ft_putnbr_fd(count, 2);
@@ -47,15 +46,11 @@ void	rra(t_pushswap *ps, int bench)
 	ps->op_count++;
 }
 
-/**
- * rrb (reverse rotate b): Sposta tutti gli elementi dello stack b verso il basso di 1.
- * L'ultimo elemento diventa il primo.
- */
 void	rrb(t_pushswap *ps, int bench)
 {
 	static int	count = 0;
 
-	if(bench == 0)
+	if (bench == 0)
 	{
 		ft_putstr_fd(" rrb: ", 2);
 		ft_putnbr_fd(count, 2);
@@ -68,14 +63,11 @@ void	rrb(t_pushswap *ps, int bench)
 	ps->op_count++;
 }
 
-/**
- * rrr : Esegue rra e rrb contemporaneamente.
- */
 void	rrr(t_pushswap *ps, int bench)
 {
 	static int	count = 0;
 
-	if(bench == 0)
+	if (bench == 0)
 	{
 		ft_putstr_fd(" rrr: ", 2);
 		ft_putnbr_fd(count, 2);
