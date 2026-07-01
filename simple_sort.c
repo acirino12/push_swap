@@ -12,10 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-	Returns the distance of index=target_value from the node(=top of the stack)
-	We'll use this value to decide whether to rotate or reverse-rotate
-*/
 int	get_position(t_node *s, int target_index)
 {
 	int		pos;
@@ -31,42 +27,31 @@ int	get_position(t_node *s, int target_index)
 	return (0);
 }
 
-/*
-To sort three elements:
-	Put the max in last position:
-		if max in position 1       -> ra
-		else if max in posizione 2 -> rra
-	Control the first two elements
-*/
-
 static void	sort_three(t_pushswap *ps)
 {
-    t_stack *a;
-	
+	t_stack	*a;
+
 	a = &ps->a;
-    if (a->size > 2)
+	if (a->size > 2)
 	{
-    	if (a->top->index > a->top->next->index && a->top->index > a->top->next->next->index)
-        	ra(ps, 1);
-    	else if (a->top->next->index > a->top->index && a->top->next->index > a->top->next->next->index)
-        	rra(ps, 1);
+		if (a->top->index > a->top->next->index
+			&& a->top->index > a->top->next->next->index)
+			ra(ps, 1);
+		else if (a->top->next->index > a->top->index
+			&& a->top->next->index > a->top->next->next->index)
+			rra(ps, 1);
 	}
 	if (a->size > 1)
 	{
-    	if (a->top->index > a->top->next->index)
-        	sa(ps, 1);
+		if (a->top->index > a->top->next->index)
+			sa(ps, 1);
 	}
 }
-
-/*
-	Take the minimus index of stack a and put it on stack b.
-	Do this till stack a has 3 elements.
-*/
 
 void	simple_sort(t_pushswap	*ps)
 {
 	int		i;
-	
+
 	if (compute_disorder(&ps->a) == 0)
 		return ;
 	i = 0;
@@ -89,5 +74,3 @@ void	simple_sort(t_pushswap	*ps)
 	while (ps->b.size)
 		pa(ps, 1);
 }
-
-
