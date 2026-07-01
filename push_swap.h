@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marcoppo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/01 10:15:16 by marcoppo          #+#    #+#             */
+/*   Updated: 2026/07/01 10:15:19 by marcoppo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -34,7 +46,7 @@ typedef struct s_pushswap
 /*                               PROTOTIPI                                    */
 /* ========================================================================== */
 
-void	bench_mode(int bench, int disorder, int* strategy, t_pushswap *ps);
+void	bench_mode(int bench, int disorder, int *strategy, t_pushswap *ps);
 
 /* Utility e Inizializzazione - si trovano su utils_1 */
 void	assign_indexes(t_stack *stack_a);
@@ -68,7 +80,7 @@ void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
 /* Prototipi aggiunti presenti in parsing */
-void    parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
+void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
 int		has_duplicate(t_stack *stack, int value);
 int		push_back(t_stack *stack, int value);
 
