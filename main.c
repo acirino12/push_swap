@@ -14,7 +14,7 @@
 
 static void	adaptive_mode(int *strategy, int disorder)
 {
-	if (disorder < 2000)
+	if (ps->a.size <= 5 || disorder < 2000)
 		strategy[1] = 1;
 	else if (disorder >= 5000)
 		strategy[1] = 3;
