@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 10:15:16 by marcoppo          #+#    #+#             */
-/*   Updated: 2026/07/07 10:31:26 by acirino          ###   ########.fr       */
+/*   Updated: 2026/07/07 10:36:50 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_pushswap
 }	t_pushswap;
 
 /* ========================================================================== */
-/*                               PROTOTYPES                                    */
+/*                               PROTOTYPES                                   */
 /* ========================================================================== */
 
 void	bench_mode(int bench, int disorder, int *strategy, t_pushswap *ps);

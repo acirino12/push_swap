@@ -6,7 +6,7 @@
 /*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 10:29:34 by acirino           #+#    #+#             */
-/*   Updated: 2026/06/29 16:40:46 by acirino          ###   ########.fr       */
+/*   Updated: 2026/07/07 10:37:45 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	adaptive_mode(int *strategy, int disorder)
 {
-	if (ps->a.size <= 5 || disorder < 2000)
+	if (disorder < 2000)
 		strategy[1] = 1;
 	else if (disorder >= 5000)
 		strategy[1] = 3;
@@ -36,7 +36,8 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(&ps->a);
 	if (strategy[0] == 0)
 		adaptive_mode(strategy, disorder);
-	if (strategy[0] == 1 || (strategy[0] == 0 && strategy[1] == 1))
+	if (ps->a.size <= 5
+		|| strategy[0] == 1 || (strategy[0] == 0 && strategy[1] == 1))
 		simple_sort(ps);
 	else if (strategy[0] == 2 || (strategy[0] == 0 && strategy[1] == 2))
 		medium_sort(ps);
