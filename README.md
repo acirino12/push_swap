@@ -1,6 +1,6 @@
 # Push_swap
 
-*This project has been created as part of the 42 curriculum by acirino, marcoppo.*
+*This project has been created as part of the 42 curriculum by acirino and marcoppo.*
 
 ## Description
 **Push_swap** is an algorithm project where the goal is to sort a set of integer values using two stacks and a limited set of operations. The program calculates and outputs the smallest sequence of instructions required to sort the data, focusing on **algorithmic complexity** (Big-O notation) and performance optimization.
@@ -45,17 +45,17 @@ The program supports specific strategy selectors and a benchmark mode:
 
 This implementation features four distinct sorting strategies to handle different input configurations efficiently:
 
-1.  **Simple Algorithm ($O(n^2)$):** An optimized selection/insertion sort adaptation used for small datasets or low-disorder stacks.
-2.  **Medium Algorithm ($O(n\sqrt{n})$):** Uses a chunk-based sorting strategy, dividing the stack into blocks to minimize moves.
-3.  **Complex Algorithm ($O(n \log n)$):** Implements a **Radix Sort** adaptation (bitwise sorting) to handle large datasets within the operation limits.
+1.  **Simple Algorithm $O(n^2)$:** An optimized selection/insertion sort adaptation used for small datasets or low-disorder stacks.
+2.  **Medium Algorithm $O(n\sqrt{n})$:** Uses a chunk-based sorting strategy, dividing the stack into blocks to minimize moves.
+3.  **Complex Algorithm $O(n \log n)$:** Implements a **Radix Sort** adaptation (bitwise sorting) to handle large datasets within the operation limits.
 4.  **Adaptive Algorithm:** Our primary strategy. It calculates the **disorder metric** before performing any moves.
 
 ### The Disorder Metric
 As required by the subject, we calculate disorder as a value between 0 and 1 by counting "mistakes" (where a larger number appears before a smaller one) relative to the total possible pairs. 
 **Thresholds used:**
-- **Low disorder (< 0.2):** Simple Sort ($O(n^2)$).
-- **Medium disorder (0.2 ≤ d < 0.5):** Medium Sort ($O(n\sqrt{n})$).
-- **High disorder (≥ 0.5):** Radix Sort ($O(n \log n)$).
+- **Low disorder (< 0.2):** Simple Sort $O(n^2)$.
+- **Medium disorder (0.2 ≤ d < 0.5):** Medium Sort $O(n\sqrt{n})$.
+- **High disorder (≥ 0.5):** Radix Sort $O(n \log n)$.
 
 ## Contributions
 The tasks were divided as follows:
