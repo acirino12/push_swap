@@ -79,7 +79,7 @@ The tasks were divided as follows:
 
 ### AI Usage
 AI tools were used ethically during development for the following tasks:
-- **Logic Refinement:** 
+- **Logic Refinement** 
 - **Edge Case Parsing:** Developing robust logic for string-to-integer conversion and error handling in the parser.
 - **Documentation:** Assisting in the translation and formatting of this technical README.
 *All AI-generated logic was reviewed, tested, and modified by the team to ensure compliance with the Norm and full understanding.*
