@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcoppo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acirino <acirino@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 10:15:16 by marcoppo          #+#    #+#             */
-/*   Updated: 2026/07/01 10:15:19 by marcoppo         ###   ########.fr       */
+/*   Updated: 2026/07/07 10:31:26 by acirino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include "libft/libft.h"
 
-/* Struttura per il singolo nodo della lista doppiamente concatenata */
+/* Structure for a single node in a doubly linked list */
 typedef struct s_node
 {
 	int				value;
@@ -27,14 +27,14 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
-/* Struttura per la gestione dello stack */
+/* Structure for stack management */
 typedef struct s_stack
 {
 	t_node	*top;
 	int		size;
 }	t_stack;
 
-/* Struttura principale del programma */
+/* Structure for the main program */
 typedef struct s_pushswap
 {
 	t_stack	a;
@@ -43,18 +43,18 @@ typedef struct s_pushswap
 }	t_pushswap;
 
 /* ========================================================================== */
-/*                               PROTOTIPI                                    */
+/*                               PROTOTYPES                                    */
 /* ========================================================================== */
 
 void	bench_mode(int bench, int disorder, int *strategy, t_pushswap *ps);
 
-/* Utility e Inizializzazione - si trovano su utils_1 */
+/* Utility and Initialization - located in utils_1 */
 void	assign_indexes(t_stack *stack_a);
 int		compute_disorder(t_stack *stack_a);
 int		ft_atoi_save(const char *str, int *result);
 void	handle_parse_error(t_pushswap *ps, char **matrix);
 
-/* Operazioni Base (Istruzioni di Push_swap) */
+/* Operations */
 // Swap
 void	sa(t_pushswap *ps, int bench);
 void	sb(t_pushswap *ps, int bench);
@@ -74,17 +74,17 @@ void	rra(t_pushswap *ps, int bench);
 void	rrb(t_pushswap *ps, int bench);
 void	rrr(t_pushswap *ps, int bench);
 
-/* Gestione Memoria ed Errori */
+/* Memory and Error Handling */
 void	free_stack(t_stack *stack);
 void	free_matrix(char **matrix);
 void	print_error_and_exit(t_pushswap *ps);
 
-/* Prototipi aggiunti presenti in parsing */
+/* Parsing */
 void	parse_arguments(int argc, char **argv, t_pushswap *ps, int *strategy);
 int		has_duplicate(t_stack *stack, int value);
 int		push_back(t_stack *stack, int value);
 
-// Algoritmi di Ordinamento
+// Sorting Algorithms and utility functions
 void	simple_sort(t_pushswap *ps);
 void	medium_sort(t_pushswap *ps);
 void	radix_sort(t_pushswap *ps);
