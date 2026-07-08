@@ -62,11 +62,12 @@ The tasks were divided as follows:
 
 *   **acirino (Lead Algorithm & Architecture):**
     *   Designed the **Radix Sort** and **Simple Sort** logic and the **Adaptive Selection** framework.
-    *   Implemented the **Disorder Metric** calculation.
     *   Developed the **Checker bonus program** to validate sorting results.
+    *   Developed the **Bench** mode.
 
 *   **marcoppo (Parsing & Operations Lead):**
     *   Developed the **Parsing System** to handle edge cases like duplicates and integer overflows.
+    *   Implemented the **Disorder Metric** calculation.
     *   Managed memory utilities and the Makefile configuration.
 	*   Designed the **Medium Sort** logic.
     *   Implemented all mandatory **Stack Operations** (push, swap, rotate, reverse rotate).
@@ -79,8 +80,8 @@ The tasks were divided as follows:
 
 ### AI Usage
 AI tools were used ethically during development for the following tasks:
-- **Logic Refinement** 
-- **Edge Case Parsing:** Developing robust logic for string-to-integer conversion and error handling in the parser.
-- **Documentation:** Assisting in the translation and formatting of this technical README.
+- **Logic Refinement**
+- **Edge Cases**
+- **Documentation**
 *All AI-generated logic was reviewed, tested, and modified by the team to ensure compliance with the Norm and full understanding.*
 ```
