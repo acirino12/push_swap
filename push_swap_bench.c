@@ -31,7 +31,7 @@ void	bench_mode(int bench, int disorder, int *strategy, t_pushswap *ps)
 		if (strategy[1] == 1)
 			ft_putstr_fd("O(n^2)", 2);
 		else if (strategy[1] == 2)
-			ft_putstr_fd("O(n rad(n))", 2);
+			ft_putstr_fd("O(n \u221An\u0305)", 2);
 		else
 			ft_putstr_fd("O(n log(n))", 2);
 	}
@@ -43,7 +43,7 @@ static void	bench_mode_2(int *strategy, t_pushswap *ps)
 	if (strategy[0] == 1)
 		ft_putstr_fd("Simple / O(n^2)", 2);
 	else if (strategy[0] == 2)
-		ft_putstr_fd("Medium / O(n rad(n))", 2);
+		ft_putstr_fd("Medium / O(n \u221An\u0305)", 2);
 	else if (strategy[0] == 3)
 		ft_putstr_fd("Complex / O(n log(n))", 2);
 	ft_putstr_fd("\n[bench] total_ops: ", 2);
